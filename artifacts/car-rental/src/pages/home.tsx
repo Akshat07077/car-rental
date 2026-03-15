@@ -13,30 +13,36 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="relative w-full h-[650px] flex items-center overflow-hidden">
+      <div className="relative w-full min-h-[520px] md:h-[650px] flex items-end md:items-center overflow-hidden">
         <img 
           src={`${import.meta.env.BASE_URL}images/hero-bg.png`} 
           alt="Luxury Car Hero" 
           className="absolute inset-0 w-full h-full object-cover scale-105 animate-in fade-in zoom-in duration-1000" 
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
+        {/* Mobile: fade bottom-to-top; Desktop: fade left-to-right */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20 md:bg-gradient-to-r md:from-background md:via-background/90 md:to-transparent" />
         
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-0">
           <div className="max-w-2xl">
-            <Badge className="mb-6 bg-primary/20 text-primary hover:bg-primary/30 border-none px-4 py-1.5 text-sm">
+            <Badge className="mb-4 md:mb-6 bg-primary/20 text-primary hover:bg-primary/30 border-none px-4 py-1.5 text-sm">
               Premium Car Rental
             </Badge>
-            <h1 className="text-5xl md:text-7xl font-display font-extrabold text-foreground leading-[1.1] tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-extrabold text-foreground leading-[1.1] tracking-tight mb-4 md:mb-6">
               Drive Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Dream Car</span> Today.
             </h1>
-            <p className="text-lg text-muted-foreground mb-10 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground mb-8 md:mb-10 max-w-xl leading-relaxed">
               Experience unparalleled luxury and performance. Browse our exclusive collection of premium vehicles for your next journey.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Link href="/cars">
-                <Button size="lg" className="rounded-xl px-8 h-14 text-base font-semibold shadow-xl shadow-primary/20">
+                <Button size="lg" className="rounded-xl px-8 h-12 md:h-14 text-base font-semibold shadow-xl shadow-primary/20 w-full sm:w-auto">
                   Browse Fleet
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button size="lg" variant="outline" className="rounded-xl px-8 h-12 md:h-14 text-base font-semibold w-full sm:w-auto">
+                  Create Account
                 </Button>
               </Link>
             </div>
@@ -45,9 +51,9 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="py-24 bg-card border-b border-border">
+      <div className="py-14 md:py-24 bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
                 <Shield className="w-8 h-8" />
@@ -74,12 +80,12 @@ export default function Home() {
       </div>
 
       {/* Featured Cars */}
-      <div className="py-24 bg-background">
+      <div className="py-14 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex justify-between items-end mb-8 md:mb-12">
             <div>
-              <h2 className="text-4xl font-display font-bold mb-4 tracking-tight">Featured Vehicles</h2>
-              <p className="text-muted-foreground text-lg">Hand-picked selections for your driving pleasure.</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-2 md:mb-4 tracking-tight">Featured Vehicles</h2>
+              <p className="text-muted-foreground text-base md:text-lg">Hand-picked selections for your driving pleasure.</p>
             </div>
             <Link href="/cars">
               <Button variant="outline" className="hidden sm:flex rounded-xl font-semibold">View All Cars</Button>

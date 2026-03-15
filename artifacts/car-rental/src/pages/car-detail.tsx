@@ -10,7 +10,7 @@ import { differenceInDays } from "date-fns";
 import { Users, Fuel, Settings2, MapPin, CalendarDays, CheckCircle2, AlertCircle } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-{/* car placeholder */}
+// car placeholder
 const defaultImage = "https://images.unsplash.com/photo-1503376760302-8fac2a800d02?w=1200&q=80";
 
 export default function CarDetail() {
@@ -73,120 +73,129 @@ export default function CarDetail() {
   };
 
   return (
-    <div className="bg-background pb-24">
+    <div className="bg-background pb-16 md:pb-24">
       {/* Immersive Header Image */}
-      <div className="relative w-full h-[50vh] md:h-[60vh] bg-muted overflow-hidden">
+      <div className="relative w-full h-[40vh] md:h-[60vh] bg-muted overflow-hidden">
         <img src={imageSrc} alt={`${car.brand} ${car.model}`} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 md:-mt-32 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
           
           {/* Main Details */}
-          <div className="lg:col-span-2 space-y-10">
-            <div className="bg-card p-8 rounded-3xl shadow-xl shadow-black/5 border border-border/50">
-              <div className="flex flex-wrap items-center gap-3 mb-4">
+          <div className="lg:col-span-2 space-y-6 lg:space-y-10">
+            <div className="bg-card p-5 md:p-8 rounded-2xl md:rounded-3xl shadow-xl shadow-black/5 border border-border/50">
+              <div className="flex flex-wrap items-center gap-3 mb-3 md:mb-4">
                 <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-none px-3 py-1">
                   {car.year}
                 </Badge>
                 {!car.available && <Badge variant="destructive" className="px-3 py-1">Currently Offline</Badge>}
               </div>
-              <h1 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2 text-foreground">
+              <h1 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight mb-2 text-foreground">
                 {car.brand} {car.model}
               </h1>
-              <p className="text-muted-foreground flex items-center gap-2 text-lg">
-                <MapPin className="w-5 h-5 text-primary" /> {car.location}
+              <p className="text-muted-foreground flex items-center gap-2 text-base md:text-lg">
+                <MapPin className="w-4 h-4 md:w-5 md:h-5 text-primary" /> {car.location}
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 border-t border-border/50 pt-10">
-                <div className="flex flex-col gap-2">
-                  <span className="text-muted-foreground text-sm uppercase tracking-wider font-semibold">Transmission</span>
-                  <div className="flex items-center gap-2 text-foreground font-medium text-lg">
-                    <Settings2 className="w-5 h-5 text-primary" /> <span className="capitalize">{car.transmission}</span>
+              <div className="grid grid-cols-3 gap-3 md:gap-6 mt-6 md:mt-10 border-t border-border/50 pt-6 md:pt-10">
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Transmission</span>
+                  <div className="flex items-center gap-1.5 md:gap-2 text-foreground font-medium text-sm md:text-lg">
+                    <Settings2 className="w-4 h-4 text-primary shrink-0" /> <span className="capitalize">{car.transmission}</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <span className="text-muted-foreground text-sm uppercase tracking-wider font-semibold">Fuel</span>
-                  <div className="flex items-center gap-2 text-foreground font-medium text-lg">
-                    <Fuel className="w-5 h-5 text-primary" /> <span className="capitalize">{car.fuelType}</span>
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Fuel</span>
+                  <div className="flex items-center gap-1.5 md:gap-2 text-foreground font-medium text-sm md:text-lg">
+                    <Fuel className="w-4 h-4 text-primary shrink-0" /> <span className="capitalize">{car.fuelType}</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <span className="text-muted-foreground text-sm uppercase tracking-wider font-semibold">Seats</span>
-                  <div className="flex items-center gap-2 text-foreground font-medium text-lg">
-                    <Users className="w-5 h-5 text-primary" /> <span>{car.seats} People</span>
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Seats</span>
+                  <div className="flex items-center gap-1.5 md:gap-2 text-foreground font-medium text-sm md:text-lg">
+                    <Users className="w-4 h-4 text-primary shrink-0" /> <span>{car.seats} People</span>
                   </div>
                 </div>
               </div>
 
               {car.description && (
-                <div className="mt-10 border-t border-border/50 pt-10">
-                  <h3 className="text-2xl font-display font-bold mb-4">About this vehicle</h3>
-                  <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">{car.description}</p>
+                <div className="mt-6 md:mt-10 border-t border-border/50 pt-6 md:pt-10">
+                  <h3 className="text-xl md:text-2xl font-display font-bold mb-3 md:mb-4">About this vehicle</h3>
+                  <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap text-sm md:text-base">{car.description}</p>
                 </div>
               )}
             </div>
           </div>
 
           {/* Booking Card */}
-          <div className="lg:col-span-1">
-            <div className="bg-card rounded-3xl p-6 md:p-8 shadow-2xl shadow-black/5 border border-border/50 sticky top-28">
-              <div className="mb-6">
-                <p className="text-3xl font-display font-bold text-primary">${car.pricePerDay}</p>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Per day</p>
+          <div className="lg:col-span-1 order-first lg:order-last">
+            <div className="bg-card rounded-2xl md:rounded-3xl p-5 md:p-8 shadow-2xl shadow-black/5 border border-border/50 lg:sticky lg:top-28">
+              <div className="flex items-center justify-between mb-5 md:mb-6">
+                <div>
+                  <p className="text-2xl md:text-3xl font-display font-bold text-primary">${car.pricePerDay}</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Per day</p>
+                </div>
+                {car.available ? (
+                  <span className="text-xs font-semibold text-green-600 bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full border border-green-200 dark:border-green-800">Available</span>
+                ) : (
+                  <span className="text-xs font-semibold text-destructive bg-destructive/10 px-3 py-1 rounded-full">Unavailable</span>
+                )}
               </div>
 
-              <div className="space-y-6">
-                <div className="space-y-3">
-                  <Label className="text-xs uppercase tracking-wider font-bold text-muted-foreground">Pickup Date</Label>
-                  <Input 
-                    type="date" 
-                    value={pickupDate} 
-                    onChange={(e) => setPickupDate(e.target.value)} 
-                    min={today}
-                    className="h-12 rounded-xl bg-background border-border/50 focus-visible:ring-primary/20"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <Label className="text-xs uppercase tracking-wider font-bold text-muted-foreground">Return Date</Label>
-                  <Input 
-                    type="date" 
-                    value={returnDate} 
-                    onChange={(e) => setReturnDate(e.target.value)} 
-                    min={minReturn}
-                    className="h-12 rounded-xl bg-background border-border/50 focus-visible:ring-primary/20"
-                  />
+              <div className="space-y-4 md:space-y-6">
+                <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-xs uppercase tracking-wider font-bold text-muted-foreground">Pickup Date</Label>
+                    <Input
+                      type="date"
+                      value={pickupDate}
+                      onChange={(e) => setPickupDate(e.target.value)}
+                      min={today}
+                      className="h-11 md:h-12 rounded-xl bg-background border-border/50 focus-visible:ring-primary/20 text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-xs uppercase tracking-wider font-bold text-muted-foreground">Return Date</Label>
+                    <Input
+                      type="date"
+                      value={returnDate}
+                      onChange={(e) => setReturnDate(e.target.value)}
+                      min={minReturn}
+                      className="h-11 md:h-12 rounded-xl bg-background border-border/50 focus-visible:ring-primary/20 text-sm"
+                    />
+                  </div>
                 </div>
 
                 {pickupDate && returnDate && (
-                  <div className="bg-muted/50 rounded-2xl p-5 border border-border/50 animate-in fade-in slide-in-from-bottom-2">
-                    <div className="flex justify-between items-center mb-3 text-sm">
+                  <div className="bg-muted/50 rounded-xl md:rounded-2xl p-4 md:p-5 border border-border/50 animate-in fade-in slide-in-from-bottom-2">
+                    <div className="flex justify-between items-center mb-2 md:mb-3 text-sm">
                       <span className="text-muted-foreground">${car.pricePerDay} × {days} days</span>
                       <span className="font-medium">${total}</span>
                     </div>
-                    <div className="border-t border-border/50 pt-3 flex justify-between items-center">
+                    <div className="border-t border-border/50 pt-2 md:pt-3 flex justify-between items-center">
                       <span className="font-bold text-foreground">Total</span>
-                      <span className="font-bold text-xl text-primary">${total}</span>
+                      <span className="font-bold text-lg md:text-xl text-primary">${total}</span>
                     </div>
 
                     {isChecking ? (
-                      <p className="text-sm text-muted-foreground mt-4 text-center">Checking availability...</p>
+                      <p className="text-xs text-muted-foreground mt-3 text-center">Checking availability...</p>
                     ) : isAvailable ? (
-                      <p className="text-sm text-green-600 mt-4 flex items-center justify-center gap-1.5 font-medium">
-                        <CheckCircle2 className="w-4 h-4" /> Available for these dates
+                      <p className="text-xs text-green-600 mt-3 flex items-center justify-center gap-1.5 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5" /> Available for these dates
                       </p>
                     ) : (
-                      <p className="text-sm text-destructive mt-4 flex items-center justify-center gap-1.5 font-medium">
-                        <AlertCircle className="w-4 h-4" /> Not available for selected dates
+                      <p className="text-xs text-destructive mt-3 flex items-center justify-center gap-1.5 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5" /> Not available for selected dates
                       </p>
                     )}
                   </div>
                 )}
 
-                <Button 
-                  size="lg" 
-                  className="w-full h-14 rounded-xl text-base font-bold shadow-lg shadow-primary/20"
+                <Button
+                  size="lg"
+                  className="w-full h-12 md:h-14 rounded-xl text-base font-bold shadow-lg shadow-primary/20"
                   onClick={handleBookNow}
                   disabled={!car.available || isChecking || !isAvailable}
                 >
