@@ -19,8 +19,9 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login({ data: { email, password } });
-      setLocation(redirectUrl);
+      const user = await login({ data: { email, password } });
+      const destination = (user as any)?.role === 'admin' ? '/admin/cars' : redirectUrl;
+      setLocation(destination);
     } catch (err) {
       // Error handled by toast in hook
     }

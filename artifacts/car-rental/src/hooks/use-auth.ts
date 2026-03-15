@@ -21,8 +21,8 @@ export function useAuth() {
 
   const login = useLogin({
     mutation: {
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: getGetMeQueryKey() });
+      onSuccess: (data) => {
+        queryClient.setQueryData(getGetMeQueryKey(), data);
         toast({ title: "Welcome back!", description: "You have successfully logged in." });
       },
       onError: (err: any) => {

@@ -1,4 +1,4 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter, Redirect } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,11 +18,15 @@ import Dashboard from "./pages/dashboard";
 import AdminCars from "./pages/admin/cars";
 import AdminBookings from "./pages/admin/bookings";
 
+const isAbortError = (error: unknown) =>
+  error instanceof DOMException && error.name === "AbortError";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 1,
+      retry: (failureCount, error) => !isAbortError(error) && failureCount < 1,
       refetchOnWindowFocus: false,
+      throwOnError: (error) => !isAbortError(error),
     },
   },
 });
@@ -35,10 +39,9 @@ function Router() {
       <Route path="/register" component={Register} />
       
       {/* Admin Pages */}
-      <Route path="/admin" component={() => {
-        window.location.replace('/admin/cars');
-        return null;
-      }} />
+      <Route path="/admin">
+        <Redirect to="/admin/cars" />
+      </Route>
       <Route path="/admin/cars">
         <AdminLayout><AdminCars /></AdminLayout>
       </Route>
