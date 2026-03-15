@@ -1,0 +1,148 @@
+You are a senior full-stack engineer helping build a production-ready Proof of Concept for a car rental platform.
+
+The project must use Next.js as a full-stack framework (App Router) with TypeScript.
+
+Goal: Build a car rental website with an admin CMS where users can browse vehicles, book them for specific dates, and admins can manage cars and bookings.
+
+Tech stack requirements:
+
+Frontend + Backend
+- Next.js (App Router)
+- TypeScript
+- Server Components where possible
+- API Routes or Server Actions for backend logic
+
+Database
+- PostgreSQL
+
+ORM
+- Prisma
+
+Authentication
+- Auth.js (NextAuth)
+
+Payments
+- Stripe
+
+File uploads
+- Cloudinary
+
+Email notifications
+- Resend
+
+The system should include the following features:
+
+1. Public website
+Users can:
+- View a list of available cars
+- Filter cars by price, transmission, seats, and location
+- Click a car to view detailed information
+- See images, specifications, and price per day
+- Select pickup and return dates
+- Book the vehicle
+
+2. Booking system
+Booking flow should be:
+Select car → choose pickup date → choose return date → calculate total price → checkout → payment → booking confirmation.
+
+Total price calculation:
+(number_of_days × car.price_per_day)
+
+3. Admin dashboard
+Admin must be able to:
+- Add new cars
+- Edit car details
+- Upload vehicle images
+- Set price per day
+- Manage bookings
+- Change booking status
+
+4. Database schema
+
+Users table
+id
+name
+email
+password
+role (admin or user)
+created_at
+
+Cars table
+id
+brand
+model
+year
+price_per_day
+transmission
+fuel_type
+seats
+location
+description
+image_url
+available
+created_at
+
+Bookings table
+id
+user_id
+car_id
+pickup_date
+return_date
+total_price
+status
+created_at
+
+Payments table
+id
+booking_id
+amount
+payment_status
+stripe_session_id
+created_at
+
+5. Folder structure
+
+/app
+/cars
+/cars/[id]
+/booking
+/dashboard
+/admin
+/admin/cars
+/admin/bookings
+
+/api
+/api/cars
+/api/bookings
+/api/payments
+
+/components
+/lib
+/prisma
+/utils
+/types
+
+6. Key requirements
+
+- Use Prisma for all database operations
+- Use server actions or API routes for booking creation
+- Validate booking dates
+- Prevent double booking of the same car
+- Ensure clean modular architecture
+- Use reusable components
+- Use TailwindCSS for styling
+
+7. Deliverables
+
+Generate:
+- Prisma schema
+- Database migrations
+- Next.js folder structure
+- API routes
+- Booking logic
+- Admin dashboard pages
+- Example UI components
+
+Focus on clean architecture and maintainable code.
+
+This is a Proof of Concept but should be structured so it can scale into a SaaS platform later.

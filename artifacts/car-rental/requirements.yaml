@@ -1,0 +1,22 @@
+packages:
+  "framer-motion": "Animations and page transitions"
+  "date-fns": "Date formatting and calculations"
+  "lucide-react": "Icons for UI"
+  "react-hook-form": "Form handling"
+  "@hookform/resolvers": "Form validation resolver"
+  "zod": "Schema validation"
+  "clsx": "Class merging"
+  "tailwind-merge": "Tailwind class merging"
+
+images:
+  - path: "artifacts/car-rental/public/images/hero-bg.png"
+    description: "A cinematic, dramatic side-profile shot of a modern luxury sports car in a dimly lit studio with vibrant electric blue and stark white neon accent lighting, glossy reflections, photorealistic 8k, dark aesthetic."
+    aspect_ratio: "16:9"
+  - path: "artifacts/car-rental/public/images/auth-bg.png"
+    description: "Abstract 3D minimal geometric flowing waves in dark rich midnight blue and graphite tones, clean premium professional tech background, soft lighting."
+    aspect_ratio: "16:9"
+
+notes:
+  - Backend uses cookie-based auth via /api/auth/me
+  - Stripe payments redirect to sessionUrl from createSession response
+  - Cloudinary images uploaded via POST /api/upload/image returning {url}
