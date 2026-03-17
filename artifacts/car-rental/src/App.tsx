@@ -26,7 +26,7 @@ const queryClient = new QueryClient({
     queries: {
       retry: (failureCount, error) => !isAbortError(error) && failureCount < 1,
       refetchOnWindowFocus: false,
-      throwOnError: (error) => !isAbortError(error),
+      throwOnError: false,
     },
   },
 });
