@@ -2,8 +2,8 @@
   "version": 2,
   "framework": null,
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "buildCommand": "pnpm --filter @workspace/car-rental run build",
-  "outputDirectory": "artifacts/car-rental/dist/public",
+  "buildCommand": "pnpm --filter @workspace/car-rental run build && mkdir -p public && cp -r artifacts/car-rental/dist/public/. public/",
+  "outputDirectory": "public",
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/index" },
     { "handle": "filesystem" },
